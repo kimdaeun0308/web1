@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리스트</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <h1>리스트</h1>
+    </header>
+    <main>
+        <table id="userTable">
+            <thead>
+                <tr>
+	                    <th>번호</th>
+	                    <th>이름</th>
+	                    <th>ID</th>
+	                    <th>Password</th>
+	                    <th>Email</th>
+	                    <th>수정</th>
+	                </tr>
+	            </thead>
+	            <tbody id="userList">
+	                <!-- 여기에 사용자 정보가 동적으로 추가될 것. -->
+	            </tbody>
+	        </table>
+	        <div style="text-align: center; margin-top: 20px;">
+	            <button type="button" id="addButton">신규 등록</button>
+	        </div>
+
+
+	    </main>
+	    <script>
+	    	document.addEventListener('DOMContentLoaded', function() {
+			    const userForm = document.getElementById('userForm');
+			    const userList = document.getElementById('userList');
+			    const maxRows = 10; // 최대 행 개수
+
+			    let rowNum = 1; // 사용자가 등록한 순서를 저장하기 위한 변수
+
+			    // 테이블에 초기 번호 행 추가
+			    for (let i = 1; i <= maxRows; i++) {
+			        const row = userList.insertRow();
+			        row.innerHTML = `<td>${i}</td>`;
+			        // 빈 칸 추가
+			        for (let j = 0; j < 4; j++) {
+			            row.innerHTML += '<td></td>';
+			        }
+			        row.innerHTML += '<td><button1 class="editButton"></button1></td>';
+			    }
+
+			    // 신규 등록 버튼 클릭 시 이벤트 처리
+			    document.getElementById('addButton').addEventListener('click', function() {
+			        // 입력된 값 가져오기
+			        const name = document.getElementById('nameInput').value.trim();
+			        const id = document.getElementById('idInput').value.trim();
+			        const password = document.getElementById('passwordInput').value.trim();
+			        const email = document.getElementById('emailInput').value.trim();
+
+			        // 테이블에 10개의 행을 초과하여 추가되었는지 확인
+			        if (rowNum > maxRows) {
+			            alert('더 이상 등록할 수 없습니다.');
+			            return;
+			        }
+
+			        // 수정 버튼에 이벤트 리스너 추가
+			        nextRow.querySelector('.editButton').addEventListener('click', function() {
+			            // 여기에 수정 기능 구현
+			            alert('수정 기능 구현');
+			        });
+
+			        // rowNum 증가
+			        rowNum++;
+
+			        // 입력 필드 초기화
+			        userForm.reset();
+			    });
+			});
+			 // 신규 등록 버튼 클릭 시 등록 페이지로 이동
+	  		document.getElementById('addButton').addEventListener('click', function() {
+	  			window.location.href = '등록.html';
+	  		});
+	    </script>
+
+</body>
+</html>
